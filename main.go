@@ -5,6 +5,7 @@ import (
 	"math/rand"
 	"time"
 
+	"github.com/michael-steinert/GoEssentials/asynchronous"
 	"github.com/michael-steinert/GoEssentials/calculator"
 	"github.com/michael-steinert/GoEssentials/composite"
 )
@@ -43,7 +44,13 @@ func main() {
 	fmt.Printf("Distance from Zero with Coordinates X:1 and Y:1 is %f\n", point.DistanceFromZero())
 	print(point.DistanceFromZero())
 	print(point.String())
-
+	// Asynchronous
+	asynchronous.WaitGroup()
+	asynchronous.LockingResources()
+	asynchronous.Channels()
+	// asynchronous.ManyChannels()
+	asynchronous.ManyChannelsWaiting()
+	asynchronous.ManyChannelsTimeout()
 }
 
 func print(value interface{}) {

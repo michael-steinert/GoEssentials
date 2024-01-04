@@ -29,7 +29,7 @@ func TestReadHostsFromFile(t *testing.T) {
 	// Create temporary Filesystem
 	temporaryDirectory, err := os.MkdirTemp("", "test-")
 	assert.NoError(t, err)
-	// Cleanup temporary Filesystem after Test
+	// Cleanup temporary Filesystem is performed later i.e. after Test
 	defer os.RemoveAll(temporaryDirectory)
 	// Create File in temporary Filesystem
 	hostFile := filepath.Join(temporaryDirectory, "hosts")

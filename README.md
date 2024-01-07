@@ -41,6 +41,40 @@
 - **Handling Goroutine Lifecycles**: It's crucial to manage the Lifecycle of GoRoutines to avoid issues like GoRoutine Leaks. Utilizing Context Package for Cancellation and Deadlines is a common Practice for Lifecycle Management in Go
 - **Mutex for Resource Synchronization**: _Mutex_ (Mutual Exclusion) in Go provides a Mechanism to ensure that only one GoRoutine can access a particular Resource at a Time. When a GoRoutine acquires a _Mutex_ to access a Resource, it locks the Resource. This Lock prevents other GoRoutines from Accessing the same Resource until the Lock is released. This ensures safe and synchronized Access to shared Resources, preventing Race Conditions and ensuring Data Integrity during concurrent Execution
 
+## Data Types
+
+### Slices
+
+- **Definition**: Slices in Go are dynamic Arrays that provide a flexible and powerful Way to work with Sequences of typed Data. They are built on Top of Arrays and provide a more convenient and efficient Interface for various Operations
+- **Properties**
+  - **Length and Capacity**: Slices have two Properties, Length and Capacity. The Length is the Number of Elements it contains, and the Capacity is the Number of Elements it can hold before needing to allocate more Memory
+  - **Zero Value**: The Zero Value of a Slice is _nil_. A _nil_ Slice has a Length and Capacity of 0 and has no underlying Array
+  - **Slicing Operations**: Slices can be re-sliced, creating a new Slice that points to the same Array but with different Start and End Positions
+  - **Appending Elements**: The _append_ Function is used to add new Elements to a Slice. This Operation might result in Allocating a new underlying Array if the Capacity of the existing Array is exceeded
+  - **Pass By Reference**: When a Slice is passed to a Function, it is done by Reference, meaning Changes made to the Elements of the Slice in the Function are visible outside the Function
+
+### Maps
+
+- **Definition**: Maps in Go are Hash Tables or Dictionaries that store Key-Value Pairs. They are used to lookup Values quickly by a Key
+- **Characteristics**
+  - **Unordered Collection**: The Elements in a Map are stored in an unordered Way. The Order of Insertion does not guarantee the Order of Iteration
+  - **Key-Value Pairs**: Each Element in a Map is a Key-Value Pair. The Keys are unique within a Map while the Values can be duplicated
+  - **Dynamic Size**: Maps can grow in Size as more Elements are added. They are not of a fixed Capacity
+  - **Zero Value**: The Zero Value of a Map is _nil_. A _nil_ Map has no Keys and can not have Keys added to it
+  - **Retrieving Elements**: When Retrieving an Element from a Map, Developer can also check if the Key was present in the Map using a two-value Assignment
+  - **Deleting Elements**: Elements can be removed from a Map using the _delete_ Function
+
+### Strings
+
+- **Definition**: Strings in Go are Sequences of Bytes that are conventionally used to represent Text
+- **Immutable**: Once created, the Content of a String can not be changed. Any Modification Operations on a String result in a new String being created
+- **UTF-8 Encoding**: Strings in Go are UTF-8 encoded by default. This means they can efficiently represent Unicode Text
+- **String Operations**
+  - **Concatenation**: Strings can be concatenated using the `+` Operator or the `fmt.Sprintf` Function for more complex Scenarios
+  - **Length**: The _len_ Function returns the Number of Bytes in the String, not necessarily the Number of Characters (i.e. _Runes_)
+  - **Indexing and Slicing**: Developer can access individual Bytes of a String or slice a String, but this operates on Bytes, not Characters. For Unicode Characters, Developer need to decode the String into Runes
+  - **Rune Operations**: To handle multi-byte Characters, Developer can convert a String to a Slice of Runes (i.e. `[]rune`), allowing them to iterate over and manipulate individual Unicode Characters
+
 ## Commands
 
 | Command                                                           | Description                                                                        |
